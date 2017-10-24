@@ -1,1 +1,8 @@
 ProjetoBibliotecaMVC
+
+<p><u>Projeto</u>: BibliotecaMVC</p>
+<p><u>Desenvolvido por</u>: Silvio Henrique Fleming (RA: 46855)</p>
+<hr />
+<p><u>Curso</u>: ENGENHARIA DE SOFTWARE (APLICAÇÕES EM WEB E MOBILE)</p>
+<p><u>Disciplina</u>: .NET Avançado</p>
+<p><u>Professor</u>: MS. Victor de Assis Rodrigues</p>
