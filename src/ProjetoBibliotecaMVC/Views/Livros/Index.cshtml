@@ -1,0 +1,58 @@
+@model IEnumerable<ProjetoBibliotecaMVC.Models.Livro>
+
+@{
+    ViewData["Title"] = "Cadastro de Livros";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Novo</a>
+</p>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            @Html.DisplayNameFor(model => model.Titulo):&nbsp;<input type="text" name="filtroPesquisa" value="@ViewBag.filtroPesquisa" />
+            <button type="submit" class="btn btn-success">Pesquisar</button> |
+            <a asp-action="Index" class="btn btn-default" title="Limpar">Limpar</a>
+        </p>
+    </div>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Foto)
+            </th>
+            <th>
+                <i class="glyphicon glyphicon-filter"></i> <a asp-action="Index" asp-route-ordenacao="@ViewBag.TituloSortParam">@Html.DisplayNameFor(model => model.Titulo)</a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantidade)
+            </th>            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <img class="card-img-top" src="~/@item.Foto" width="80px" height="80px">
+            </td>            
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantidade)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.LivroID" class="btn btn-warning" title="Editar"><i class="glyphicon glyphicon-pencil"></i></a> 
+                <a asp-action="Details" asp-route-id="@item.LivroID" class="btn btn-info" title="Detalhes"><i class="glyphicon glyphicon-search"></i></a> 
+                <a asp-action="Delete" asp-route-id="@item.LivroID" class="btn btn-danger" title="Deletar"><i class="glyphicon glyphicon-remove"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

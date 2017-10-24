@@ -1,0 +1,76 @@
+@model ProjetoBibliotecaMVC.Models.Emprestimo
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+<h2>@ViewData["Title"] </h2>
+
+<div>
+    <h4>Emprestimo</h4>
+    <hr />
+    
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DataDevolucao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataDevolucao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DataFim)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataFim)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DataInicio)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataInicio)
+        </dd>
+    </dl>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Capa</th>
+                <th>T&iacute;tulo</th>
+                <th>Autor</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.LivroEmprestimo)
+            {
+                <tr>
+                    <td>
+                        <img class="card-img-top" src="~/@item.Livro.Foto"
+                             width="80px">
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Livro.Titulo)
+                    </td>
+                    <td>
+                        @foreach (var livroAutor in item.Livro.LivroAutor)
+                        {
+                            @Html.DisplayFor(modelItem => livroAutor.Autor.Nome)
+                            <br />
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <p>
+        <a asp-action="Index" class="btn btn-default">Voltar</a>
+    </p>
+    <p>
+        @if (string.IsNullOrEmpty(Model.DataDevolucao))
+        {
+            <a asp-action="DevolverLivros" asp-route-id="@Model.EmprestimoID"
+               class="btn btn-warning"><i class="glyphicon glyphicon-inbox"></i> Devolver Emprestimo</a>
+        }
+    </p>
+</div>

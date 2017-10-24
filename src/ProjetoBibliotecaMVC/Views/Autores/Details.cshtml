@@ -1,0 +1,24 @@
+@model ProjetoBibliotecaMVC.Models.Autor
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <h4>Autor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.AutorID" class="btn btn-warning" title="Editar">Editar</a> |
+    <a asp-action="Index" class="btn btn-default">Voltar</a>
+</div>

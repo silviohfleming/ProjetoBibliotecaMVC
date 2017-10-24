@@ -1,0 +1,21 @@
+﻿body {
+    padding-bottom: 0 !important;
+}
+a.logo {
+    color: #fff !important;
+}
+.navbar-inverse {
+    background-color: #343a40 !important
+}
+.py-5 {
+    margin-top: 3rem!important;
+        padding-top: 3rem!important;
+         padding-bottom: 3rem!important;
+}
+.bg-dark {
+        background-color: #343a40!important;
+}
+.rodape{
+    color: #fff;
+
+}

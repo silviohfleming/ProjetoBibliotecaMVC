@@ -1,0 +1,65 @@
+@model IEnumerable<ProjetoBibliotecaMVC.Models.Usuario>
+
+@{
+    ViewData["Title"] = "Cadastro de Usuarios";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Novo</a>
+</p>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            @Html.DisplayNameFor(model => model.Email):&nbsp;<input type="text" name="filtroPesquisa" value="@ViewBag.filtroPesquisa" />
+            <button type="submit" class="btn btn-success">Pesquisar</button> |
+            <a asp-action="Index" class="btn btn-default" title="Limpar">Limpar</a>
+        </p>
+    </div>
+</form>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                <i class="glyphicon glyphicon-filter"></i> <a asp-action="Index" asp-route-ordenacao="@ViewBag.EmailSortParam">@Html.DisplayNameFor(model => model.Email)</a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Senha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Senha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefone)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.UsuarioID" class="btn btn-warning" title="Editar"><i class="glyphicon glyphicon-pencil"></i></a> 
+                <a asp-action="Details" asp-route-id="@item.UsuarioID" class="btn btn-info" title="Detalhes"><i class="glyphicon glyphicon-search"></i></a> 
+                <a asp-action="Delete" asp-route-id="@item.UsuarioID" class="btn btn-danger" title="Deletar"><i class="glyphicon glyphicon-remove"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

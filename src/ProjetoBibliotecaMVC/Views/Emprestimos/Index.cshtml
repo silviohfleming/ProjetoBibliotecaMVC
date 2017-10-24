@@ -1,0 +1,46 @@
+@model IEnumerable<ProjetoBibliotecaMVC.Models.Emprestimo>
+
+@{
+    ViewData["Title"] = "Cadastro de Emprestimos";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DataInicio)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.DataFim)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.DataDevolucao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>            
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInicio)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.DataFim)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.DataDevolucao)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.EmprestimoID"  class="btn btn-info" title="Detalhes"><i class="glyphicon glyphicon-search"></i> Detalhes</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

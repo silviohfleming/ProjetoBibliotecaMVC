@@ -1,0 +1,53 @@
+@model ProjetoBibliotecaMVC.Models.Livro
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <h4>Livro</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>        
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantidade)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Quantidade)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Foto)
+        </dt>
+        <dd>
+            <img src="~/@Model.Foto" alt="Exemplo Foto" />
+        </dd>   
+        <dt>
+            Autores
+        </dt>
+        <dd>
+            <table class="table table-striped">
+                <tbody>
+                    @foreach (var item in Model.LivroAutor)
+                    {
+                        <tr>
+                            <td><i class="glyphicon glyphicon-user"></i>
+                                @Html.DisplayFor(modelItem => item.Autor.Nome)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </dd>     
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.LivroID" class="btn btn-warning" title="Editar">Editar</a> |
+    <a asp-action="Index" class="btn btn-default">Voltar</a>
+</div>

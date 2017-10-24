@@ -1,0 +1,47 @@
+@model IEnumerable<ProjetoBibliotecaMVC.Models.Autor>
+
+@{
+    ViewData["Title"] = "Cadastro de Autores";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Novo</a>
+</p>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            @Html.DisplayNameFor(model => model.Nome):&nbsp;<input type="text" name="filtroPesquisa" value="@ViewBag.filtroPesquisa" />
+            <button type="submit" class="btn btn-success">Pesquisar</button> |
+            <a asp-action="Index" class="btn btn-default" title="Limpar">Limpar</a>
+        </p>
+    </div>
+</form>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                <i class="glyphicon glyphicon-filter"></i> <a asp-action="Index" asp-route-ordenacao="@ViewBag.NomeSortParam">@Html.DisplayNameFor(model => model.Nome)</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.AutorID" class="btn btn-warning" title="Editar"><i class="glyphicon glyphicon-pencil"></i></a> 
+                <a asp-action="Details" asp-route-id="@item.AutorID" class="btn btn-info" title="Detalhes"><i class="glyphicon glyphicon-search"></i></a> 
+                <a asp-action="Delete" asp-route-id="@item.AutorID" class="btn btn-danger" title="Deletar"><i class="glyphicon glyphicon-remove"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
